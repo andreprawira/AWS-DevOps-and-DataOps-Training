@@ -7,29 +7,7 @@ resource "aws_kinesis_stream" "stream" {
   )}"
 }
 
-resource "aws_s3_bucket" "raw-bucket" {
-  bucket = "lda-s3-raw"
-  tags = "${merge(
-    local.common_tags,
-    local.kinesis_module_tags
-  )}"
-}
 
-resource "aws_s3_bucket" "conform-bucket" {
-  bucket = "lda-s3-conform"
-  tags = "${merge(
-    local.common_tags,
-    local.kinesis_module_tags
-  )}"
-}
-
-resource "aws_s3_bucket_public_access_block" "bucket" {
-  bucket                  = "${aws_s3_bucket.raw-bucket.id}"
-  block_public_acls       = true
-  block_public_policy     = true
-  ignore_public_acls      = true
-  restrict_public_buckets = true
-}
 
 resource "aws_iam_role" "firehose_role" {
   name               = "lda_firehose_role"
@@ -137,11 +115,3 @@ locals {
   }
 }
 
-resource "aws_cloudwatch_log_group" "log_group" {
-  name = "lda-log-group"
-}
-
-resource "aws_cloudwatch_log_stream" "log_stream" {
-  name           = "LDALogStream"
-  log_group_name = "${aws_cloudwatch_log_group.log_group.name}"
-}

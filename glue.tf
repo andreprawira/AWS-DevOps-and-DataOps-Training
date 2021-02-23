@@ -1,16 +1,3 @@
-resource "aws_s3_bucket" "glue-bucket" {
-  bucket = "lda-glue-script"
-  tags = "${merge(
-    local.common_tags
-  )}"
-}
-
-resource "null_resource" "upload-glue-script-to-s3" {
-  provisioner "local-exec" {
-    command = "aws s3 sync glue s3://lda-glue-script"
-  }
-}
-
 resource "aws_glue_job" "raw-to-conform" {
   name     = "raw-to-conform-job"
   role_arn = "${aws_iam_role.raw-to-conform.arn}"
