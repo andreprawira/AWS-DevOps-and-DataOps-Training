@@ -1,4 +1,4 @@
-# AWS-DevOps-and-DataOps
+# Provision Infrastructures using Terraform in AWS
 
 1. Change ONLY bucket and dynamodb_table in main.tf to your own name 
 2. Create an S3 bucket with the same name as you put in main.tf
