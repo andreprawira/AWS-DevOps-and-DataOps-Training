@@ -5,3 +5,5 @@
 3. Create a DynamoDB Table with the same name as you put in main.tf and LockID as the primary key
 
 ![Diagram](Diagram.png)
+
+ref: https://aws.amazon.com/blogs/security/how-use-ci-cd-deploy-configure-aws-security-services-terraform/
