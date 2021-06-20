@@ -3,6 +3,8 @@
 1. Change ONLY bucket and dynamodb_table in main.tf to your own name 
 2. Create an S3 bucket with the same name as you put in main.tf
 3. Create a DynamoDB Table with the same name as you put in main.tf and LockID as the primary key
+4. Push this repo into AWS CodeCommit
+5. Deploy the code in AWS CodePipeline
 
 ![Diagram](Diagram.png)
 
